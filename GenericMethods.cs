@@ -7,9 +7,15 @@ using System.Threading.Tasks;
 
 namespace CustomUtils
 {
-    public static class StringUtils
+    /// <summary>
+    /// Class with methods that works with generics.
+    /// </summary>
+    public static class GenericMethods
     {
-        public static string? ToJsonString(this object obj, bool indented = true)
+        /// <summary>
+        /// Converts an object to a json string.
+        /// </summary>
+        public static string? ToJsonString<T>(this T obj, bool indented = true)
         {
             JsonSerializerOptions opt = new()
             {
@@ -17,7 +23,7 @@ namespace CustomUtils
             };
             try
             {
-                return JsonSerializer.Serialize(obj, obj.GetType(), opt);
+                return JsonSerializer.Serialize(obj, obj!.GetType(), opt);
             }
             catch (System.Exception ex)
             {
