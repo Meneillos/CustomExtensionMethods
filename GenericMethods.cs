@@ -31,5 +31,21 @@ namespace CustomUtils
                 return null;
             }
         }
+
+        /// <summary>
+        /// Converts string to integer.
+        /// </summary>
+        public static int? ToInt(this string number)
+        {
+            try
+            {
+                Int32.TryParse(number, out int value);
+                return value;
+            }
+            catch (System.Exception)
+            {
+                return null;
+            }
+        }
     }
 }
